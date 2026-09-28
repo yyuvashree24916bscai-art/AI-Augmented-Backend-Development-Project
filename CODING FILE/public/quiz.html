@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Practice Quizzes — AI StudyBuddy</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div id="nav-container"></div>
+
+  <main class="main-content">
+    <div class="page-header">
+      <h1 class="page-title">Practice Quizzes</h1>
+      <p class="page-subtitle">Test your understanding with multiple-choice questions, plausible exam distractors, and immediate score verification.</p>
+    </div>
+
+    <div id="quiz-alert-container"></div>
+
+    <!-- Generator Panel -->
+    <div class="card" style="max-width: 760px; margin: 0 auto 24px auto;">
+      <div class="card-header">
+        <h2 class="card-title">Generate Practice Exam</h2>
+      </div>
+
+      <div style="display:grid; grid-template-columns: 2fr 1fr; gap:16px;">
+        <div class="form-group">
+          <label for="quiz-material-select" class="form-label">Study Material</label>
+          <select id="quiz-material-select" class="form-select">
+            <option value="">Loading materials...</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="quiz-question-count" class="form-label">Questions</label>
+          <select id="quiz-question-count" class="form-select">
+            <option value="3">3 Questions</option>
+            <option value="4" selected>4 Questions</option>
+            <option value="6">6 Questions</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="custom-quiz-topic" class="form-label">Custom Subject or Concept Focus (Optional)</label>
+        <input type="text" id="custom-quiz-topic" class="form-input" placeholder="e.g. Page replacement algorithms, FIFO vs LRU, thrashing">
+      </div>
+
+      <div style="display:flex; justify-content:flex-end;">
+        <button id="generate-quiz-btn" class="btn btn-primary">❓ Generate Practice Quiz</button>
+      </div>
+    </div>
+
+    <!-- Score Banner -->
+    <div id="quiz-score-container" class="alert alert-success" style="max-width: 760px; margin: 0 auto 20px auto; display: none;">
+      <div id="quiz-score-text" style="font-size:1.15rem; font-weight:600;"></div>
+    </div>
+
+    <!-- Quiz Question Container -->
+    <div class="quiz-container">
+      <div id="quiz-questions-list">
+        <!-- Rendered question boxes -->
+      </div>
+
+      <div id="quiz-actions-container" style="display: none; text-align: center; margin: 24px 0;">
+        <button id="submit-quiz-btn" class="btn btn-primary" style="padding: 12px 32px; font-size: 1rem;">
+          ✅ Submit & Check Answers
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    AI StudyBuddy — Powered by Google Gemini 2.5 Flash Evaluation Engine
+  </footer>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/quiz.js"></script>
+</body>
+</html>

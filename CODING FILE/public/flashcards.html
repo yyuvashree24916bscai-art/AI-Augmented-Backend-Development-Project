@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Flashcards — AI StudyBuddy</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div id="nav-container"></div>
+
+  <main class="main-content">
+    <div class="page-header">
+      <h1 class="page-title">Interactive Flashcards</h1>
+      <p class="page-subtitle">Master key terminologies and mechanisms with AI-generated spaced repetition flashcards.</p>
+    </div>
+
+    <div id="flashcards-alert-container"></div>
+
+    <!-- Generation Control Card -->
+    <div class="card" style="max-width: 780px; margin: 0 auto 24px auto;">
+      <div class="card-header">
+        <h2 class="card-title">Generate or Select Deck</h2>
+      </div>
+
+      <div style="display:grid; grid-template-columns: 2fr 1fr; gap:16px;">
+        <div class="form-group">
+          <label for="flashcard-material-select" class="form-label">Study Material</label>
+          <select id="flashcard-material-select" class="form-select">
+            <option value="">Loading materials...</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="card-count-select" class="form-label">Cards to Generate</label>
+          <select id="card-count-select" class="form-select">
+            <option value="4">4 Cards</option>
+            <option value="5" selected>5 Cards</option>
+            <option value="8">8 Cards</option>
+            <option value="10">10 Cards</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="custom-card-topic" class="form-label">Or Custom Topic / Prompt (Optional)</label>
+        <input type="text" id="custom-card-topic" class="form-input" placeholder="e.g. Virtual memory thrashing, page tables, and LRU algorithm">
+      </div>
+
+      <div style="display:flex; justify-content:flex-end;">
+        <button id="generate-flashcards-btn" class="btn btn-primary">🗂️ Generate Flashcards</button>
+      </div>
+    </div>
+
+    <!-- 3D Interactive Card Player -->
+    <div class="flashcard-deck-container">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+        <span id="card-counter-indicator" class="user-badge" style="font-weight:700;">Card 1 of 5</span>
+        <span style="font-size:0.8rem; color:var(--color-text-muted);">💡 Click card to flip</span>
+      </div>
+
+      <div class="flashcard" id="active-flashcard" title="Click to flip card">
+        <!-- Front -->
+        <div class="flashcard-face flashcard-front">
+          <div class="flashcard-badge">Question (Front)</div>
+          <div class="flashcard-text" id="card-question-text">
+            Select a material above and click "Generate Flashcards" to populate your study deck.
+          </div>
+          <div class="flashcard-hint">🔄 Click anywhere to reveal answer</div>
+        </div>
+
+        <!-- Back -->
+        <div class="flashcard-face flashcard-back">
+          <div class="flashcard-badge">Answer (Back)</div>
+          <div class="flashcard-text" id="card-answer-text">
+            The answer will appear here once flipped.
+          </div>
+          <div class="flashcard-hint">🔄 Click anywhere to flip back</div>
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <div class="flashcard-controls">
+        <button id="prev-card-btn" class="btn btn-secondary">← Previous</button>
+        <button id="flip-card-btn" class="btn btn-primary">🔄 Flip Card</button>
+        <button id="next-card-btn" class="btn btn-secondary">Next →</button>
+      </div>
+    </div>
+
+    <!-- Full Deck List View -->
+    <div class="card" style="max-width: 780px; margin: 36px auto 0 auto;">
+      <div class="card-header">
+        <h2 class="card-title">📖 Deck Overview</h2>
+      </div>
+      <div id="cards-full-list">
+        <div style="text-align:center; color:var(--color-text-muted); padding:16px;">
+          Cards will be listed here for quick review.
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    AI StudyBuddy — Powered by Google Gemini 2.5 Flash
+  </footer>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/flashcards.js"></script>
+</body>
+</html>

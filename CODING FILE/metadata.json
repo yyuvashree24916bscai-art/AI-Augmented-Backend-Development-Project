@@ -1,0 +1,7 @@
+{
+  "name": "AI StudyBuddy",
+  "description": "AI-Powered Learning Assistant for students to summarize materials, generate flashcards and quizzes, build study plans, and query knowledge with semantic vector RAG search.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+

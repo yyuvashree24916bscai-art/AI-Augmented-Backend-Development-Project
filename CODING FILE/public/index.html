@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI StudyBuddy — AI-Powered Learning Assistant</title>
+  <meta name="description" content="AI StudyBuddy helps students transform lecture notes into summaries, flashcards, quizzes, and RAG search with Gemini AI.">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div id="nav-container"></div>
+
+  <main class="main-content">
+    <div class="auth-wrapper">
+      <div class="auth-card">
+        <div style="text-align: center; margin-bottom: 20px;">
+          <h1 style="font-size: 1.6rem; font-weight: 700; color: var(--color-text-main);">Welcome to AI StudyBuddy</h1>
+          <p style="color: var(--color-text-muted); font-size: 0.9rem; margin-top: 6px;">Sign in with your email and password to access AI study tools</p>
+        </div>
+
+        <div style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 18px; padding: 10px 12px; background: #eff6ff; border: 1px solid #bfdbfe; border-radius: var(--radius-sm); font-size: 0.825rem; color: #1e40af; line-height: 1.4;">
+          <span style="font-size: 1.1rem; line-height: 1;">✨</span>
+          <span><strong>Open Student Access:</strong> Any student can enter their email and password to log in directly. New accounts are automatically activated!</span>
+        </div>
+
+        <div id="login-alert-container"></div>
+
+        <form id="login-form">
+          <div class="form-group">
+            <label for="login-email" class="form-label">Email Address</label>
+            <input type="email" id="login-email" class="form-input" placeholder="you@college.edu or gmail.com" required>
+          </div>
+
+          <div class="form-group">
+            <label for="login-password" class="form-label">Password</label>
+            <input type="password" id="login-password" class="form-input" placeholder="Enter your password" required>
+          </div>
+
+          <button type="submit" id="login-submit-btn" class="btn btn-primary btn-block">Sign In / Start Studying</button>
+        </form>
+
+        <div style="margin-top: 20px; padding: 14px; background: #f8fafc; border: 1px dashed var(--color-border); border-radius: var(--radius-sm); font-size: 0.85rem;">
+          <div style="font-weight: 600; margin-bottom: 6px; color: var(--color-text-main);">⚡ Quick Fill Demo Accounts:</div>
+          <div style="display: flex; gap: 8px;">
+            <button type="button" onclick="fillDemo('student')" class="btn btn-secondary btn-sm" style="flex:1;">🎓 Demo Student</button>
+            <button type="button" onclick="fillDemo('admin')" class="btn btn-secondary btn-sm" style="flex:1;">👑 Faculty Admin</button>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 18px; font-size: 0.875rem; color: var(--color-text-muted);">
+          Want a custom profile name? <a href="/register.html" style="color: var(--color-primary); font-weight: 600;">Register here</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    AI StudyBuddy — Powered by Google Gemini 2.5 Flash & Vector Embeddings
+  </footer>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // If already logged in, redirect to dashboard
+      if (getToken() && getUser()) {
+        window.location.href = '/dashboard.html';
+        return;
+      }
+      renderNavigation('login');
+
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get('session_expired')) {
+        document.getElementById('login-alert-container').innerHTML = 
+          `<div class="alert alert-danger">Your session has expired. Please log in again.</div>`;
+      } else if (urlParams.get('unauthorized')) {
+        document.getElementById('login-alert-container').innerHTML = 
+          `<div class="alert alert-info">Please sign in to access that page.</div>`;
+      }
+
+      const form = document.getElementById('login-form');
+      const alertContainer = document.getElementById('login-alert-container');
+      const submitBtn = document.getElementById('login-submit-btn');
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        alertContainer.innerHTML = '';
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Signing in...';
+
+        const email = document.getElementById('login-email').value;
+        const password = document.getElementById('login-password').value;
+
+        try {
+          const res = await apiFetch('/auth/login', {
+            method: 'POST',
+            body: { email, password }
+          });
+
+          if (res.success && res.token) {
+            setAuth(res.token, res.user);
+            window.location.href = res.user.role === 'admin' ? '/admin.html' : '/dashboard.html';
+          } else {
+            alertContainer.innerHTML = `<div class="alert alert-danger">⚠️ ${res.error || 'Login failed.'}</div>`;
+          }
+        } catch (err) {
+          alertContainer.innerHTML = `<div class="alert alert-danger">Network error: ${err.message}</div>`;
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Sign In';
+        }
+      });
+    });
+
+    function fillDemo(role) {
+      if (role === 'admin') {
+        document.getElementById('login-email').value = 'yyuvashree24916bscai@gmail.com';
+        document.getElementById('login-password').value = 'yuvashree@@2006';
+      } else {
+        document.getElementById('login-email').value = 'student@studybuddy.com';
+        document.getElementById('login-password').value = 'student123';
+      }
+    }
+  </script>
+</body>
+</html>

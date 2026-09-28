@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upload Study Material — AI StudyBuddy</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div id="nav-container"></div>
+
+  <main class="main-content">
+    <div class="page-header">
+      <h1 class="page-title">Upload Study Material</h1>
+      <p class="page-subtitle">Upload lecture slides, notes, or course documents. AI StudyBuddy will vectorize the content for instant summaries, flashcards, and RAG Q&A.</p>
+    </div>
+
+    <div id="upload-alert-container"></div>
+
+    <div class="card" style="max-width: 800px; margin: 0 auto;">
+      <form id="material-upload-form">
+        <div class="form-group">
+          <label for="material-title" class="form-label">Material Title</label>
+          <input type="text" id="material-title" class="form-input" placeholder="e.g. Operating Systems: Virtual Memory & Page Replacement" required>
+        </div>
+
+        <div class="form-group">
+          <label for="material-subject" class="form-label">Subject / Course Name</label>
+          <input type="text" id="material-subject" class="form-input" placeholder="e.g. Computer Science CS301" value="Computer Science">
+        </div>
+
+        <div class="form-group">
+          <label for="material-file" class="form-label">Attach File (Optional — .txt, .md, .pdf, .json)</label>
+          <input type="file" id="material-file" class="form-input" accept=".txt,.md,.markdown,.json,.csv,.pdf,.py,.js">
+          <div class="form-help">Supported formats: Text notes, Markdown files, PDFs, or code excerpts (max 10MB).</div>
+        </div>
+
+        <div class="form-group">
+          <label for="material-content" class="form-label">Or Paste Lecture Notes Directly</label>
+          <textarea id="material-content" class="form-textarea" rows="9" placeholder="Paste textbook excerpts, lecture slide transcripts, or study notes here..."></textarea>
+          <div class="form-help">If a file is selected, the file contents will be extracted. You can also paste text directly.</div>
+        </div>
+
+        <button type="submit" id="upload-submit-btn" class="btn btn-primary btn-block" style="padding: 12px; font-size: 1rem;">
+          🚀 Upload & Vectorize Material
+        </button>
+      </form>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    AI StudyBuddy — Powered by Google Gemini 2.5 Flash & Multer File Processor
+  </footer>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/upload.js"></script>
+</body>
+</html>

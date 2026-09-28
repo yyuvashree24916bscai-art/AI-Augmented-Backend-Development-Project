@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Summaries — AI StudyBuddy</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div id="nav-container"></div>
+
+  <main class="main-content">
+    <div class="page-header">
+      <h1 class="page-title">AI Study Summaries</h1>
+      <p class="page-subtitle">Distill lengthy notes into structured executive overviews, key concepts, core mechanisms, and high-yield exam takeaways.</p>
+    </div>
+
+    <div id="summary-alert-container"></div>
+
+    <div class="card" style="max-width: 860px; margin: 0 auto 24px auto;">
+      <div class="card-header">
+        <h2 class="card-title">Select Study Document</h2>
+      </div>
+
+      <div class="form-group">
+        <label for="summary-material-select" class="form-label">Choose from your uploaded notes:</label>
+        <select id="summary-material-select" class="form-select">
+          <option value="">Loading your materials...</option>
+        </select>
+      </div>
+
+      <div style="display:flex; justify-content:flex-end; gap:10px;">
+        <a href="/upload.html" class="btn btn-secondary">Upload New Material</a>
+        <button id="generate-summary-btn" class="btn btn-primary">✨ Generate AI Summary</button>
+      </div>
+    </div>
+
+    <!-- Summary Output Card -->
+    <div id="summary-result-container" class="card" style="max-width: 860px; margin: 0 auto; display: none;">
+      <div class="card-header" style="background:#f8fafc; margin:-24px -24px 20px -24px; padding:18px 24px;">
+        <div>
+          <span class="user-badge" style="background:#e0e7ff; color:#3730a3; font-weight:700;">AI Summary</span>
+          <h2 id="summary-target-title" style="font-size:1.3rem; margin-top:6px; color:var(--color-text-main);">Document Summary</h2>
+        </div>
+        <button onclick="window.print()" class="btn btn-secondary btn-sm">🖨️ Print / Save</button>
+      </div>
+
+      <div id="summary-body-content" class="markdown-body" style="line-height:1.7; font-size:1rem;">
+        <!-- Rendered Summary Content -->
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    AI StudyBuddy — Powered by Google Gemini 2.5 Flash Academic Engine
+  </footer>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/summary.js"></script>
+</body>
+</html>

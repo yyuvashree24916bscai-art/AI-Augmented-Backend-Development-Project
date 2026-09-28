@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Chat Assistant — AI StudyBuddy</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div id="nav-container"></div>
+
+  <main class="main-content">
+    <div class="page-header" style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:16px;">
+      <div>
+        <h1 class="page-title">RAG Chat Assistant</h1>
+        <p class="page-subtitle">Ask any question about your course materials. Responses are directly grounded in your vectorized notes.</p>
+      </div>
+
+      <div style="min-width: 280px;">
+        <label for="chat-context-select" style="font-size:0.8rem; font-weight:600; color:var(--color-text-muted); display:block; margin-bottom:4px;">RAG Context Scope:</label>
+        <select id="chat-context-select" class="form-select" style="padding:6px 12px; font-size:0.85rem;">
+          <option value="">🔍 Global RAG (Search across all notes)</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Chat Window -->
+    <div class="chat-window">
+      <div class="chat-messages" id="chat-messages-container">
+        <!-- AI Greeting -->
+        <div class="message-bubble message-ai">
+          👋 Hello! I am your <strong>AI StudyBuddy</strong> tutor.
+          <br><br>
+          You can ask me to clarify challenging concepts, explain formulas, compare definitions, or quiz you on your uploaded lecture notes. How can I help you today?
+        </div>
+      </div>
+
+      <!-- Input Bar -->
+      <div class="chat-input-bar">
+        <input type="text" id="chat-prompt-input" class="form-input" placeholder="Type your academic question here (e.g. 'Explain how page replacement prevents thrashing')..." autocomplete="off">
+        <button id="chat-send-btn" class="btn btn-primary" style="padding: 10px 24px;">Send 🚀</button>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    AI StudyBuddy — Powered by Google Gemini 2.5 Flash RAG Engine
+  </footer>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/chat.js"></script>
+</body>
+</html>

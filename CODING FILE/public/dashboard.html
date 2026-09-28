@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard — AI StudyBuddy</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div id="nav-container"></div>
+
+  <main class="main-content">
+    <div class="page-header" style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:16px;">
+      <div>
+        <h1 class="page-title">Welcome back, <span id="user-welcome-name">Student</span>!</h1>
+        <p class="page-subtitle">Your personal AI learning assistant is ready to help you study smarter.</p>
+      </div>
+      <a href="/upload.html" class="btn btn-primary">➕ Upload Study Material</a>
+    </div>
+
+    <!-- Quick stats -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-label">Study Materials Uploaded</div>
+        <div class="stat-value" id="stat-materials-count">0</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">AI Engine</div>
+        <div class="stat-value" style="font-size:1.35rem; color:var(--color-primary); font-weight:700;">Gemini 2.5 Flash</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Semantic Retrieval</div>
+        <div class="stat-value" style="font-size:1.35rem; color:var(--color-success); font-weight:700;">Vector RAG</div>
+      </div>
+    </div>
+
+    <!-- Quick Tool Cards -->
+    <div style="margin-bottom: 28px;">
+      <h2 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 14px; color: var(--color-text-main);">Study Toolset</h2>
+      <div class="dashboard-features-grid">
+        <div class="feature-card">
+          <div>
+            <div class="feature-icon">📝</div>
+            <div class="feature-title">AI Summaries</div>
+            <div class="feature-desc">Generate structured executive overviews, key concept definitions, and high-yield takeaways from notes.</div>
+          </div>
+          <a href="/summary.html" class="btn btn-secondary btn-sm">Generate Summary →</a>
+        </div>
+
+        <div class="feature-card">
+          <div>
+            <div class="feature-icon">🗂️</div>
+            <div class="feature-title">Interactive Flashcards</div>
+            <div class="feature-desc">Test your active recall with 3D flip flashcard decks generated directly from your uploaded materials.</div>
+          </div>
+          <a href="/flashcards.html" class="btn btn-secondary btn-sm">Review Flashcards →</a>
+        </div>
+
+        <div class="feature-card">
+          <div>
+            <div class="feature-icon">❓</div>
+            <div class="feature-title">Practice Quizzes</div>
+            <div class="feature-desc">Take instant multiple-choice practice tests with realistic distractors, answer validation, and score analytics.</div>
+          </div>
+          <a href="/quiz.html" class="btn btn-secondary btn-sm">Start Quiz →</a>
+        </div>
+
+        <div class="feature-card">
+          <div>
+            <div class="feature-icon">📅</div>
+            <div class="feature-title">Personalized Study Plan</div>
+            <div class="feature-desc">Input your target exam date and hours to receive a paced milestone roadmap and review routine.</div>
+          </div>
+          <a href="/study-plan.html" class="btn btn-secondary btn-sm">Build Study Plan →</a>
+        </div>
+
+        <div class="feature-card">
+          <div>
+            <div class="feature-icon">🤖</div>
+            <div class="feature-title">RAG Chat Assistant</div>
+            <div class="feature-desc">Ask questions grounded in your course documents with intelligent context retrieval and citations.</div>
+          </div>
+          <a href="/chat.html" class="btn btn-secondary btn-sm">Chat with Notes →</a>
+        </div>
+
+        <div class="feature-card">
+          <div>
+            <div class="feature-icon">🔍</div>
+            <div class="feature-title">Vector Semantic Search</div>
+            <div class="feature-desc">Search across concepts rather than exact keywords using dense mathematical vector embeddings.</div>
+          </div>
+          <a href="/search.html" class="btn btn-secondary btn-sm">Semantic Search →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Uploaded Materials Table -->
+    <div class="card">
+      <div class="card-header">
+        <h2 class="card-title">📚 My Study Materials</h2>
+        <a href="/upload.html" class="btn btn-secondary btn-sm">Upload New</a>
+      </div>
+
+      <div class="table-responsive">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Document Title & Excerpt</th>
+              <th>Subject</th>
+              <th>Date Added</th>
+              <th style="width: 280px;">AI Actions</th>
+            </tr>
+          </thead>
+          <tbody id="recent-materials-list">
+            <tr>
+              <td colspan="4" style="text-align:center; color: var(--color-text-muted); padding: 24px;">
+                Loading study materials...
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    AI StudyBuddy — Powered by Google Gemini 2.5 Flash & Vector Search
+  </footer>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/dashboard.js"></script>
+</body>
+</html>

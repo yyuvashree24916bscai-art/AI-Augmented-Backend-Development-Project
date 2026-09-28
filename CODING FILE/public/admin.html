@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard — AI StudyBuddy</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div id="nav-container"></div>
+
+  <main class="main-content">
+    <div class="page-header" style="display:flex; justify-content:space-between; align-items:center;">
+      <div>
+        <h1 class="page-title">Administrator Monitoring Console</h1>
+        <p class="page-subtitle">Protected administrative interface for user monitoring, system telemetry, and AI activity auditing.</p>
+      </div>
+      <span class="user-badge badge-admin" style="padding:6px 14px; font-size:0.9rem;">👑 Admin Access Verified</span>
+    </div>
+
+    <!-- Telemetry Cards -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-label">Registered Users</div>
+        <div class="stat-value" id="metric-users">0</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Total Study Materials</div>
+        <div class="stat-value" id="metric-materials">0</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Generated Summaries</div>
+        <div class="stat-value" id="metric-summaries">0</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Practice Quizzes Taken</div>
+        <div class="stat-value" id="metric-quizzes">0</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Database Status</div>
+        <div class="stat-value" id="metric-db-status" style="font-size:1.15rem; color:var(--color-success);">Checking...</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Active AI Engine</div>
+        <div class="stat-value" id="metric-ai-engine" style="font-size:1.05rem; color:var(--color-primary);">Gemini 2.5 Flash</div>
+      </div>
+    </div>
+
+    <!-- User Monitoring Table -->
+    <div class="card">
+      <div class="card-header">
+        <h2 class="card-title">👥 User Accounts & Roles (RBAC)</h2>
+      </div>
+
+      <div class="table-responsive">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>User Name</th>
+              <th>Email Address</th>
+              <th>System Role</th>
+              <th>Materials Uploaded</th>
+              <th>Member Since</th>
+            </tr>
+          </thead>
+          <tbody id="admin-users-table-body">
+            <tr>
+              <td colspan="5" style="text-align:center; padding:20px; color:var(--color-text-muted);">
+                Loading registered user accounts...
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Activity Log Audit Table -->
+    <div class="card">
+      <div class="card-header">
+        <h2 class="card-title">📜 System Audit & Activity Logs</h2>
+      </div>
+
+      <div class="table-responsive">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th style="width: 140px;">Timestamp</th>
+              <th>Operation / Event Description</th>
+              <th style="width: 120px;">User ID</th>
+            </tr>
+          </thead>
+          <tbody id="admin-activity-table-body">
+            <tr>
+              <td colspan="3" style="text-align:center; padding:20px; color:var(--color-text-muted);">
+                Loading system audit logs...
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    AI StudyBuddy — Administrator Portal & RBAC Security Layer
+  </footer>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vector Semantic Search — AI StudyBuddy</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div id="nav-container"></div>
+
+  <main class="main-content">
+    <div class="page-header">
+      <h1 class="page-title">Semantic Vector Search</h1>
+      <p class="page-subtitle">Search your notes by underlying mathematical meaning rather than exact keyword matches using dense vector embeddings.</p>
+    </div>
+
+    <div id="search-alert-container"></div>
+
+    <!-- Search Box -->
+    <div class="card" style="max-width: 860px; margin: 0 auto 24px auto;">
+      <form id="semantic-search-form">
+        <div class="form-group" style="margin-bottom: 12px;">
+          <label for="search-query-input" class="form-label">Semantic Query</label>
+          <div style="display:flex; gap:10px;">
+            <input type="text" id="search-query-input" class="form-input" placeholder="e.g. How does the operating system handle excessive swapping?" required>
+            <button type="submit" id="search-submit-btn" class="btn btn-primary" style="padding:0 24px;">🔍 Search</button>
+          </div>
+          <div class="form-help">Tip: Try natural conceptual questions like "memory translation mechanism" or "page fault recovery".</div>
+        </div>
+      </form>
+    </div>
+
+    <!-- Results Section -->
+    <div id="search-results-container" style="max-width: 860px; margin: 0 auto; display: none;">
+      <!-- AI Insight -->
+      <div id="search-ai-insight"></div>
+
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+        <h2 style="font-size:1.15rem; font-weight:700;">Ranked Semantic Matches</h2>
+        <span class="user-badge" style="background:#e0e7ff; color:#3730a3;">Cosine Similarity Top-K</span>
+      </div>
+
+      <!-- Hits list -->
+      <div id="search-hits-list">
+        <!-- Rendered results -->
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    AI StudyBuddy — Powered by Google Gemini Embeddings & Vector Search
+  </footer>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/search.js"></script>
+</body>
+</html>

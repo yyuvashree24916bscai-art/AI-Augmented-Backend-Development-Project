@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI StudyBuddy</title>
+    <meta name="description" content="AI-Powered Learning Assistant for students to summarize materials, generate flashcards and quizzes, build study plans, and query knowledge with semantic vector RAG search." />
+    <meta property="og:title" content="AI StudyBuddy" />
+    <meta property="og:description" content="AI-Powered Learning Assistant for students to summarize materials, generate flashcards and quizzes, build study plans, and query knowledge with semantic vector RAG search." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script>
+      // Automatically route to public StudyBuddy frontend if accessed directly
+      if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
+        window.location.replace('/index.html');
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
